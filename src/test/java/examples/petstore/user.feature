@@ -20,3 +20,13 @@ Feature: Casos de prueba del modulo usuario
     When method put
     Then status 200
     And match response contains { "code": 200,"type": "unknown"}
+
+
+  Scenario: CP02 - Login exitoso
+    Given url "https://petstore.swagger.io/v2"
+    And path "/user/login"
+    And param username = "carlos"
+    And param password = "123456"
+    When method get
+    Then status 200
+    And match response.message == "#string"
